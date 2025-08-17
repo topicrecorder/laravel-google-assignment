@@ -1,96 +1,151 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Login</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - MyApp</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <style>
         body {
-            min-height: 100vh;
             margin: 0;
             padding: 0;
-            font-family: 'Segoe UI', Arial, sans-serif;
-            background: linear-gradient(135deg, #e3f2fd 0%, #90caf9 100%);
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #1e1e2f, #2d2d44);
+            height: 100vh;
             display: flex;
-            align-items: center;
             justify-content: center;
+            align-items: center;
         }
-        .login-card {
-            background: #fff;
-            border-radius: 16px;
-            box-shadow: 0 8px 32px rgba(25,118,210,0.10), 0 1.5px 4px rgba(0,0,0,0.04);
-            padding: 48px 32px 40px 32px;
-            max-width: 350px;
+
+        .login-container {
+            background: #1f2235;
+            padding: 2.5rem;
+            border-radius: 1rem;
+            box-shadow: 0px 8px 20px rgba(0,0,0,0.35);
             width: 100%;
+            max-width: 400px;
             text-align: center;
-            position: relative;
         }
-        .login-logo {
-            width: 56px;
-            height: 56px;
-            border-radius: 50%;
-            margin-bottom: 18px;
-            box-shadow: 0 2px 8px rgba(25,118,210,0.10);
-            background: #e3f2fd;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-left: auto;
-            margin-right: auto;
+
+        .login-container h2 {
+            color: #fff;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
         }
-        .login-logo img {
-            width: 36px;
-            height: 36px;
+
+        .input-group {
+            margin-bottom: 1.2rem;
+            text-align: left;
         }
-        h1 {
-            color: #1976d2;
-            margin-bottom: 32px;
-            font-size: 2rem;
+
+        .input-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            color: #ccc;
         }
-        .google-btn {
-            display: inline-block;
-            background: #fff;
-            color: #444;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            padding: 12px 24px;
+
+        .input-group input {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #333;
+            border-radius: 0.6rem;
+            background: #2a2d43;
+            color: #fff;
             font-size: 1rem;
-            font-weight: 500;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.04);
-            transition: background 0.2s, box-shadow 0.2s, border 0.2s;
-            cursor: pointer;
-            text-decoration: none;
+            transition: border 0.3s ease;
+        }
+
+        .input-group input:focus {
+            border: 1px solid #4c7cf3;
             outline: none;
         }
-        .google-btn:hover, .google-btn:focus {
-            background: #e3f2fd;
-            box-shadow: 0 4px 12px rgba(25,118,210,0.10);
-            border: 1.5px solid #1976d2;
+
+        .options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            font-size: 0.85rem;
         }
-        .google-icon {
-            vertical-align: middle;
-            margin-right: 8px;
-            height: 20px;
+
+        .options label {
+            color: #aaa;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
         }
-        @media (max-width: 480px) {
-            .login-card {
-                padding: 32px 8px 24px 8px;
-                max-width: 95vw;
-            }
-            h1 {
-                font-size: 1.3rem;
-            }
+
+        .options a {
+            color: #4c7cf3;
+            text-decoration: none;
+        }
+
+        .options a:hover {
+            text-decoration: underline;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 0.9rem;
+            background: #4c7cf3;
+            border: none;
+            border-radius: 0.6rem;
+            color: #fff;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .btn:hover {
+            background: #3459c5;
+        }
+
+        .google-btn {
+            margin-top: 1rem;
+            background: #fff;
+            color: #444;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .google-btn:hover {
+            background: #e6e6e6;
         }
     </style>
 </head>
 <body>
-    <div class="login-card">
-        <div class="login-logo">
-            <img src="https://cdn-icons-png.flaticon.com/128/3759/3759268.png" alt="Windows XP 3D Logo">
-        </div>
-        <h1>Login</h1>
-        <a class="google-btn" href="{{ route('google.redirect') }}">
-            <img class="google-icon" src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google icon">
-            Login with Google
-        </a>
+    <div class="login-container">
+        <h2>Welcome Back</h2>
+        <form method="POST" action="/login">
+            @csrf
+            <div class="input-group">
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email" required autofocus>
+            </div>
+
+            <div class="input-group">
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password" required>
+            </div>
+
+            <div class="options">
+                <label>
+                    <input type="checkbox" name="remember"> Remember me
+                </label>
+                <a href="/forgot-password">Forgot your password?</a>
+            </div>
+
+            <button type="submit" class="btn">Log In</button>
+
+            <button type="button" class="btn google-btn" onclick="window.location='{{ route('google.redirect') }}'">
+                <img src="https://www.svgrepo.com/show/355037/google.svg" width="18" alt="Google"> Login with Google
+            </button>
+        </form>
     </div>
 </body>
 </html>

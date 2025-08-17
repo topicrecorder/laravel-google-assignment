@@ -5,9 +5,33 @@
     <style>
         body {
             font-family: 'Segoe UI', Arial, sans-serif;
-            background: linear-gradient(135deg, #e3f2fd 0%, #90caf9 100%);
+            background: linear-gradient(135deg, #1d4768ff 0%, #90caf9 100%);
             margin: 0;
             padding: 0;
+        }
+        .navbar {
+            background: #1f2235;
+            color: #fff;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar h1 {
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .navbar a {
+            color: #fff;
+            margin-left: 1.5rem;
+            text-decoration: none;
+            font-size: 0.95rem;
+        }
+
+        .navbar a:hover {
+            text-decoration: underline;
         }
         .container {
             max-width: 420px;
@@ -80,6 +104,15 @@
     </style>
 </head>
 <body>
+        <!-- Navbar -->
+    <div class="navbar">
+        <h1>MyApp Dashboard</h1>
+        <div>
+            <a href="#">Profile</a>
+            <a href="#">Settings</a>
+            <a href="#">Logout</a>
+        </div>
+    </div>
     <div class="container">
         <div class="user-avatar">
             <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="User Avatar">
